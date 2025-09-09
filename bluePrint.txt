@@ -1,0 +1,34 @@
+transformer has decoder and encoder.
+Both of them has 6 main layer and each of them consist with 2 sublayer. 
+these sublayer are parallel fully connected Neural network and malti-head self attention mechanism.
+And connect these with residual connection which give difference 
+between output of malti-head self attention mechanism and fully connected NN.
+
+structure of decoder is almost same as encoder's but output from sublayer in encoder is insurted.
+
+And decoder's sublayer is collected to use only the known input row.
+
+attention mechanism:
+input is key, queli in d_k demention and value vector in d_v demention.
+dot product 
+
+設計
+
+サブレイヤー：
+出力 # おそらく512次元
+　  ↑
+　　残差接続
+　  ↑
+並列全結合層　＃　max(0, xW1+b1)W2 + b2  1層のNN,活性化関数はRelu
+    ↑       
+　　残差接続
+　  ↑
+マルチヘッド自己注意機構　＃入力はその前の結合からの512次元？
+
+入力：トークン列a
+
+出力：トークン列b
+
+
+
+
