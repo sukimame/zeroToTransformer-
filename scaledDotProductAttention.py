@@ -13,15 +13,19 @@ class ScaledDotProductAttention:
         self.Wk = rng.random((dmodel, dk))
         self.Wv = rng.random((dmodel, dv))
     
-    def computeQKV(self, X: np.array):
+    def selfQKV(self, X: np.array):
         self.q = X @ self.Wq
         self.k = X @ self.Wk
         self.v = X @ self.Wv
     
+    def crossQKV(self, X, Y):
+        self.q = X @ self.Wq
+        self.k = Y @ self.Wk
+        self.v = Y @ self.Wv
+    
     def scaledDotProduct(self):
         matmul = self.q @ self.k.T
         scaled = matmul / np.sqrt(self.dk)
-        print(scaled.shape)
         softmaxed = softmax(scaled)
         output = softmaxed @ self.v
         return output
@@ -30,7 +34,7 @@ if __name__ == "__main__":
     dmodel = 10
     X = np.random.default_rng().random((20, dmodel))
     sdpa = ScaledDotProductAttention(dmodel, 15, 25)
-    sdpa.computeQKV(X)
+    sdpa.selfQKV(X)
     print(sdpa.scaledDotProduct())
         
         
