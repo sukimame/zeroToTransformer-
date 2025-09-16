@@ -2,7 +2,7 @@ from multiHeadAttention import MultiHeadAttention
 from feedforwardNetwork import FeedforwardNetwork
 import numpy as np
 
-class sublayer:
+class SubLayer:
     def __init__(self, dmodel=512):
         self.layerType = None
         self.proc = None
@@ -17,7 +17,7 @@ class sublayer:
         x = (X - mu)/sigma
         y = self.gamma * x + self.beta
         return y
-        
+
     def fFNsublayer(self):
         self.layerType = FeedforwardNetwork()
         self.proc = self.layerType.forward
@@ -41,11 +41,11 @@ if __name__ == "__main__":
     X = rng.random((64, 512))
     Y = rng.random((64, 512))
     
-    s1 = sublayer()
+    s1 = SubLayer()
     s1.fFNsublayer()
-    s2 = sublayer()
+    s2 = SubLayer()
     s2.selfMHAsublayer()
-    s3 = sublayer()
+    s3 = SubLayer()
     s3.crossMHAsublayer()
     print(s1.layerforward(X).shape)
     print(s2.layerforward(X).shape)
