@@ -1,5 +1,6 @@
 from decoderMainLayer import DecoderMainLayer
 from encoderMainLayer import EncoderMainLayer
+from inputProc import InputProc
 import numpy as np
 
 def softmax(x):
@@ -11,12 +12,14 @@ class model:
         self.encoder = [EncoderMainLayer() for _ in range(6)]
         self.decoder = [DecoderMainLayer() for _ in range(6)]
         
+        self.dmodel = dmodel
+        
         rng = np.random.default_rng()
         self.W = rng.random((512, v_len))
     
     def forward(self, inputs, outputs):
-        z_en = inputs
-        z_de = outputs
+        z_en = inputs + InputProc.positional_encoding(*inputs.shape)
+        z_de = outputs + InputProc.positional_encoding(*outputs.shape)
         for layer in self.encoder:
             z_en = layer.mainLayerforward(z_en)
 
@@ -27,8 +30,8 @@ class model:
         return logits
     
 if __name__ == "__main__":
-    inputs = np.ones((1, 512))
-    outputs = np.ones((1, 512))
+    inputs = np.ones((64, 512))
+    outputs = np.ones((64, 512))
     m = model(1000)
     print(m.forward(inputs, outputs).shape)
         
