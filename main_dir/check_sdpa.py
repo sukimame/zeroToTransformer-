@@ -1,5 +1,5 @@
 import numpy as np
-from main_dir.scaledDotProductAttention import ScaledDotProductAttention
+from scaledDotProductAttention import ScaledDotProductAttention
 
 
 def compute_analytic_weight_grads(sdpa, X, target):
