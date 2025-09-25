@@ -1,4 +1,4 @@
-from sublayer import SubLayer
+from .sublayer import SubLayer
 import numpy as np
 
 class DecoderMainLayer:

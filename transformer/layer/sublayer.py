@@ -1,5 +1,5 @@
-from multiHeadAttention import MultiHeadAttention
-from feedforwardNetwork import FeedforwardNetwork
+from ..attention import MultiHeadAttention
+from .feedforwardNetwork import FeedforwardNetwork
 import numpy as np
 
 class SubLayer:

@@ -1,4 +1,4 @@
-from model import Model
+from transformer import Model
 
 f1 = open("jp_corpus.txt", "r", encoding="utf-8")
 f2 = open("en_corpus.txt", "r", encoding="utf-8")

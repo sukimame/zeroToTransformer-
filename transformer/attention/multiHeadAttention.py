@@ -1,4 +1,4 @@
-from scaledDotProductAttention import ScaledDotProductAttention
+from .scaledDotProductAttention import ScaledDotProductAttention
 import numpy as np
 
 class MultiHeadAttention:

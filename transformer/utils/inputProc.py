@@ -1,10 +1,13 @@
 import numpy as np
 import sentencepiece as spm
+from pathlib import Path
 
 class InputProc:
     def __init__(self):
         self.sp = spm.SentencePieceProcessor()
-        self.sp.Load("sentencepiece.model")
+
+        p = r"C:\Users\nokom\SentencePieceModel\sentencepiece.model"
+        self.sp.Load(p)
         
         vocab_size = self.sp.GetPieceSize()
         d_model = 512

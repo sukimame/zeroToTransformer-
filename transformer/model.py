@@ -1,6 +1,6 @@
-from decoderMainLayer import DecoderMainLayer
-from encoderMainLayer import EncoderMainLayer
-from inputProc import InputProc
+from .layer import DecoderMainLayer
+from .layer import EncoderMainLayer
+from .utils import InputProc
 import numpy as np
 
 def softmax(x):
